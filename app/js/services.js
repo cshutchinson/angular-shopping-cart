@@ -9,10 +9,8 @@ angular.module('sc').factory('itemFactory', function(){
 angular.module('sc').factory('cartPusher', function(){
   var cart = [];
   var updateCart = function(item, qty){
-    cart.push({
-      item: item,
-      qty: qty
-    })
+    item.qty = qty;
+    cart.push(item);
   }
   var cartCount = function(){
     var totalItems = 0;
@@ -22,6 +20,7 @@ angular.module('sc').factory('cartPusher', function(){
     return totalItems;
   }
 
+  var subtotal
 
   return {
     cart: cart,
