@@ -3,7 +3,16 @@
 </section>
 <div class="container">
   <div class="row">
-    <div class="col-sm-2 col-sm-offset-10">
+    <div class="col-sm-3">
+      Search By Category
+      <select ng-model="cat" class="" name="cat">
+        <option ng-repeat="category in getCategories()">{{category}}</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      Search By Name: <input ng-model="search" type="text" name="search" value="">
+    </div>
+    <div class="col-sm-2 col-sm-offset-4">
       <button class="btn btn-sm btn-primary" ng-click="changeView('cart')" type="button" name="button">Checkout | {{itemCount()}} Items</button>
     </div>
   </div>
@@ -11,7 +20,7 @@
     <hr>
   </div>
 </div>
-<div class="container" ng-repeat="storeItem in storeItems">
+<div class="container" ng-repeat="storeItem in storeItems | filter:search | filter:cat">
   <!-- {{storeItem._id}} -->
   <div class="row">
     <div class="col-sm-3">

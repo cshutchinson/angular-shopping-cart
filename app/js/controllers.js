@@ -2,11 +2,23 @@ angular.module('sc').controller("StoreController", function($scope, itemFactory,
  $scope.storeItems = itemFactory.storeItems;
  $scope.cart = cartPusher.cart;
  $scope.itemCount = cartPusher.cartCount;
+ // $scope.categories = $scope.getCategories();
  $scope.addCart = function (item, qty){
    cartPusher.updateCart(item, qty);
  }
  $scope.changeView = function(view){
    $location.path(view);
+ }
+ $scope.getCategories = function(){
+   var categories = [];
+   $scope.storeItems.forEach(function(elem){
+     elem.categories.forEach(function(cat){
+       if(categories.indexOf(cat)===-1){
+         categories.push(cat);
+       }
+     })
+   })
+   return categories;
  }
 });
 

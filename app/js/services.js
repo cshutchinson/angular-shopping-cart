@@ -20,8 +20,6 @@ angular.module('sc').factory('cartPusher', function(){
     return totalItems;
   }
 
-  var subtotal
-
   return {
     cart: cart,
     updateCart: updateCart,
